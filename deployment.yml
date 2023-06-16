@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubetest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubetest
+  template:
+    metadata:
+      labels: # labels to select/identify the deployment
+        app: kubetest
+    spec:     # pod spec                  
+      containers: 
+      - name: kubetest
+        image: ashutoshpandey/kube-test:v1.2
+        ports:
+        - containerPort: 8080
